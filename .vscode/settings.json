@@ -1,0 +1,19 @@
+{
+	"[lua]": {
+		"editor.defaultFormatter": "JohnnyMorganz.stylua",
+		"editor.formatOnSave": true,
+		"editor.tabCompletion": "on"
+	},
+
+	"[luau]": {
+		"editor.defaultFormatter": "JohnnyMorganz.stylua",
+		"editor.formatOnSave": true,
+		"editor.tabCompletion": "on"
+	},
+	"stylua.targetReleaseVersion": "latest",
+
+	"charmed-icons.associations.files": {
+		// inits
+		"init.luau": "julia"
+	}
+}
