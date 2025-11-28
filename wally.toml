@@ -3,5 +3,10 @@ name = "raine/formati"
 version = "0.1.0"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
+exclude = ["**"]
+include = ["src", "src/**", "default.project.json", "wally.toml", "LICENSE"]
 
 [dependencies]
+
+[dev-dependencies]
+testez = "roblox/testez@0.4.1"
