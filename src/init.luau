@@ -39,7 +39,7 @@ function Format.constructor(self: any, raw)
 	self._mark = false
 	self._linebreak = false
 	self._comment = false
-	self._autoEscape = true
+	self.autoEscape = true
 
 	if typeof(raw) == "string" then
 		self._raw = raw
@@ -132,62 +132,85 @@ function Format.stringify(self: any)
 	if self._comment then
 		formatted = `<!--{formatted}-->`
 	end
+
 	return formatted
 end
 
 function Format.escape(self: any): Format
 	self.autoEscape = false
-	self._raw = self._raw.gsub("<", "&lt;")
-	self._raw = self._raw.gsub(">", "&gt;")
-	self._raw = self._raw.gsub('"', "&quot;")
-	self._raw = self._raw.gsub("'", "&apos;")
-	self._raw = self._raw.gsub("&", "&amp;")
+	self._raw = self._raw:gsub("<", "&lt;")
+	self._raw = self._raw:gsub(">", "&gt;")
+	self._raw = self._raw:gsub('"', "&quot;")
+	self._raw = self._raw:gsub("'", "&apos;")
+	self._raw = self._raw:gsub("&", "&amp;")
 
 	return self
 end
 
 function Format.font(self: any, props: FormatiFontProps)
 	self._font = props
+
+	return self
 end
 
 function Format.stroke(self: any, props: FormatiStrokeProps)
 	self._stroke = props
+
+	return self
 end
 
 function Format.bold(self: any)
 	self._bold = true
+
+	return self
 end
 
-function Format.italics(self: any)
+function Format.italic(self: any)
 	self._italics = true
+
+	return self
 end
 
-function Format.under(self: any)
+function Format.underline(self: any)
 	self._under = true
+
+	return self
 end
 
 function Format.strike(self: any)
 	self._strike = true
+
+	return self
 end
 
 function Format.upper(self: any)
 	self._uppercase = true
+
+	return self
 end
 
 function Format.smallcaps(self: any)
 	self._smallcaps = true
+
+	return self
 end
 
 function Format.mark(self: any, props: FormatiMarkProps)
 	self._mark = props
+
+	return self
 end
 
-function Format.linebreak(self: any, count: number)
-	self._linebreak = count
+function Format.linebreak(self: any, count: number?)
+	self._linebreak = count or 1
+
+	return self
 end
 
-function Format.comment(self: any, count: number)
-	self._comment = count
+function Format.comment(self: any)
+	self._comment = true
+
+	return self
 end
 
 -- Format function
