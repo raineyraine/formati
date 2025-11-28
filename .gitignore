@@ -7,3 +7,6 @@ roblox.yml
 node_modules
 
 out
+
+Packages/
+DevPackages/

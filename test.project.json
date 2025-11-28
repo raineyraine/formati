@@ -1,0 +1,27 @@
+{
+	"name": "formati-test",
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"Packages": {
+				"$className": "Folder",
+				"formati": {
+					"$path": "default.project.json"
+				}
+			},
+			"DevPackages": {
+				"$path": "DevPackages"
+			}
+		},
+		"TestService": {
+			"$properties": {
+				"ExecuteWithStudioRun": true
+			},
+			"$className": "TestService",
+			"Test": {
+				"$path": "scripts/run-tests.server.luau"
+			}
+		}
+	}
+}
