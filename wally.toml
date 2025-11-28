@@ -2,11 +2,15 @@
 name = "raineyraine/formati"
 version = "1.0.0"
 registry = "https://github.com/UpliftGames/wally-index"
+
+description = "A simple roblox library for formatting Roblox RichText"
+repository = "https://github.com/raineyraine/formati"
+homepage = "https://github.com/raineyraine/formati/blob/main/README.md"
+
 realm = "shared"
 exclude = ["**"]
 include = ["src", "src/**", "default.project.json", "wally.toml", "LICENSE"]
-repository = "https://github.com/raineyraine/formati"
-homepage = "https://github.com/raineyraine/formati/blob/main/README.md"
+
 
 [dependencies]
 
