@@ -47,7 +47,7 @@ tostring(formatter) // -> "some text"
 **TODO** add documentation for formatter methods
 
 ### `function` formati.f (raw: string)
-A function that just creates a [`Format`](#class-formatiformat) object. The `raw` argument is passed to the [Format.new()](#constructor-new-raw-string) constructor.
+A helper function that just creates a [`Format`](#class-formatiformat) object. The `raw` argument is passed to the [Format.new()](#constructor-new-raw-string) constructor.
 
 > [!TIP]
 > You should always use f() when formatting strings. It reduces the amount of typing needed in both TypeScript and Luau, while providing the exact same behavior.
