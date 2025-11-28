@@ -100,31 +100,26 @@ function Format.stringify(self: any)
 		formatted = `<sc>{formatted}</sc>`
 	end
 	if self._mark then
-		local _value = self._mark.transparency
-		local transparencyString = if _value ~= 0
-				and _value == _value
-				and _value
-			then `transparency="{self._mark.transparency}"`
+		local transparency = self._mark.transparency
+		local transparencyString = if transparency
+				and transparency > 0
+				and transparency == transparency
+				and transparency <= 1
+			then `transparency="{transparency}"`
 			else ""
-		local _result
-		local _value_1 = self._mark.color
-		if _value_1 ~= "" and _value_1 then
-			local _color = self._mark.color
-			_result = `color="{if type(_color) == "string" then self._mark.color else "#" .. self._mark.color:ToHex()}"`
-		else
-			_result = ""
-		end
-		local colorString = _result
+
+		local color = self._mark.color
+		local colorString = if color ~= "" and color
+			then `color="{if type(color) == "string" then self._mark.color else "#" .. self._mark.color:ToHex()}"`
+			else ""
+
 		formatted = `<mark {colorString} {transparencyString}>{formatted}</mark>`
 	end
 
 	-- Special implementation, since there's no real way to do proper line breaks... we just have this
-	do
-		local linebreakCondition = self._linebreak
-		if linebreakCondition ~= 0 and linebreakCondition == linebreakCondition and linebreakCondition then
-			linebreakCondition = self._linebreak > 0
-		end
-		if linebreakCondition ~= 0 and linebreakCondition == linebreakCondition and linebreakCondition then
+	if self._linebreak then
+		local linebreakCount = self._linebreak
+		if linebreakCount ~= 0 and linebreakCount == linebreakCount and linebreakCount and linebreakCount > 0 then
 			formatted = formatted .. string.rep(newline, self._linebreak)
 		end
 	end
@@ -147,14 +142,14 @@ function Format.escape(self: any): Format
 	return self
 end
 
-function Format.font(self: any, props: FormatiFontProps)
-	self._font = props
+function Format.font(self: any, props: FormatiFontProps?)
+	self._font = props or {}
 
 	return self
 end
 
-function Format.stroke(self: any, props: FormatiStrokeProps)
-	self._stroke = props
+function Format.stroke(self: any, props: FormatiStrokeProps?)
+	self._stroke = props or {}
 
 	return self
 end
@@ -195,8 +190,8 @@ function Format.smallcaps(self: any)
 	return self
 end
 
-function Format.mark(self: any, props: FormatiMarkProps)
-	self._mark = props
+function Format.mark(self: any, props: FormatiMarkProps?)
+	self._mark = props or {}
 
 	return self
 end
