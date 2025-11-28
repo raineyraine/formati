@@ -1,12 +1,14 @@
-# Build
-build.rbxm
+# Dependencies
+/node_modules
+/Packages
+/DevPackages
 
+# Project output
+/out
+/include
+*.tsbuildinfo
+*.rbxl
+*.rbxm
 sourcemap.json
-
-roblox.yml
-node_modules
-
-out
-
-Packages/
-DevPackages/
+roblox.d.luau
+types.d.luau
