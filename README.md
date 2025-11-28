@@ -20,6 +20,8 @@ $ pnpm add @rbxts/formati
 formati = "_/formati@version"
 ```
 
+Alternatively, a `rbxm` file is provided in the GitHub Releases menu.
+
 ## Documentation
 This is primarily for Luau, as TypeScript documentation is provided in code comments.
 ### `string` formati.newline
