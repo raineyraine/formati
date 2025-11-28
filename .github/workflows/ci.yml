@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Rokit
+        uses: CompeyDev/setup-rokit@v0.1.2
+
+      - name: Install dependencies
+        run: wally install
+
+      - name: Generate sourcemap.json
+        run: rojo sourcemap test.project.json -o sourcemap.json
+
+      - name: Download global Roblox types
+        run: curl -o scripts/roblox.d.luau https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/scripts/globalTypes.d.luau
+
+      - name: Analyze
+        run: luau-lsp analyze --settings=scripts/analyze-settings.json --defs=scripts/roblox.d.luau --defs=scripts/testez.d.luau --base-luaurc=.luaurc --sourcemap=sourcemap.json src
+
+      - name: Check code quality
+        run: |
+          selene src
+          stylua --check src
+
+      - name: Build model
+        run: rojo build -o ripple.rbxm
