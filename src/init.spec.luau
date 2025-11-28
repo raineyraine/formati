@@ -97,6 +97,39 @@ return function()
 						expect(new("raw"):linebreak(2):stringify()).to.equal("raw<br/><br/>")
 					end)
 				end)
+
+				describe("mark", function()
+					it("should support no arguments", function()
+						expect(new("raw"):mark():stringify()).to.equal("<mark  >raw</mark>")
+					end)
+					it("should support color arguments", function()
+						expect(new("raw"):mark({ color = Color3.new(1, 1, 1) }):stringify()).to.equal(
+							`<mark color="#ffffff" >raw</mark>`
+						)
+						expect(new("raw"):mark({ color = "rgb(69,69,69)" }):stringify()).to.equal(
+							`<mark color="rgb(69,69,69)" >raw</mark>`
+						)
+					end)
+					it("should support transparency arguments", function()
+						expect(new("raw"):mark({ transparency = 0.5 }):stringify()).to.equal(
+							`<mark  transparency="0.5">raw</mark>`
+						)
+						expect(new("raw"):mark({ transparency = 0 }):stringify()).to.equal(`<mark  >raw</mark>`)
+					end)
+					it("should support transparency & color arguments", function()
+						expect(new("raw"):mark({ transparency = 0.5, color = Color3.new(1, 1, 1) }):stringify()).to.equal(
+							`<mark color="#ffffff" transparency="0.5">raw</mark>`
+						)
+					end)
+				end)
+
+				describe("stroke", function()
+					warn("auto PASS for <stroke>, no tests written")
+				end)
+
+				describe("font", function()
+					warn("auto PASS for <font>, no tests written")
+				end)
 			end)
 		end
 	end
