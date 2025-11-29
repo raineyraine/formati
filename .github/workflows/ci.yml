@@ -21,12 +21,12 @@ jobs:
       - name: Install dependencies
         run: wally install
 
-      - name: Generate sourcemap.json
-        run: rojo sourcemap test.project.json -o sourcemap.json
-
       - name: Download global Roblox types
         run: curl -o scripts/roblox.d.luau https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/scripts/globalTypes.d.luau
 
+      - name: Generate sourcemap.json
+        run: rojo sourcemap test.project.json -o sourcemap.json
+      
       - name: Analyze
         run: luau-lsp analyze --settings=scripts/analyze-settings.json --defs=scripts/roblox.d.luau --defs=scripts/testez.d.luau --base-luaurc=.luaurc --sourcemap=sourcemap.json src
 
