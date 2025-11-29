@@ -215,7 +215,9 @@ end
 
 -- Exports
 return {
-	Format = Format :: { new: (raw: unknown) -> Format },
+	Format = {
+		new = Format.new,
+	},
 	newline = newline,
 	f = f,
 }
